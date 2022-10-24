@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#ifdef NODBUG
+#ifdef NODEBUG
 #define return void
 #endif
 
-int my_assert9(int n){
+int my_assert(int n){
 	if(n==0){
 		printf("my_assert: error");
 		return 0;
