@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include "lib/libPerror.c"
 
 main(int argc, char *argv[]){
 	FILE *f;

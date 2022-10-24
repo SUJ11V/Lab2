@@ -4,7 +4,7 @@
 
 void my_perror(char str[]){
 	if(str==NULL)
-		printf("%s\n', strerror(errno));
+		printf("%s\n", strerror(errno));
 	else
 		printf("%s : %s\n",str, strerror(errno));
 }
