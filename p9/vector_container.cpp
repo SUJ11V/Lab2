@@ -5,52 +5,42 @@ using namespace std;
 
 int main(){
 
-	int x; //column
-	int y; //row
+	int x;
+	int y;
 
-	cout << "input x : ";
+	cout << "열의 수를 입력해주세요: ";
 	cin >> x;
 
-	cout << "input y : ";
+	cout << "행의 수를 입력해주세요: ";
 	cin >> y;
 
-	vector<vector<int>> arr1(y);
-	vector<vector<int>> arr2(y);
+	vector<vector<int>> a1(y);
+	vector<vector<int>> a2(y);
 
-	cout << "input one procession\n";
+	cout << "첫 번째 행렬의 값을 입력해주세요\n";
 	for(int i=0; i<y; i++){
 		for(int j=0; j<x; j++){
-			cout << "arr1[" << i << "][" << j << "] : ";
+			cout << "a1[" << i << "][" << j << "] : ";
 			int n;
 			cin >> n;
-			arr1[i].push_back(n);
+			a1[i].push_back(n);
 		}
 	}
 
-	cout << "input two procession\n";
+	cout << "두 번째 행렬의 값을 입력해주세요\n";
 	for(int i=0; i<y; i++){
 		for(int j=0; j<x; j++){
-			cout << "arr2[" << i << "][" << j <<"] : ";
+			cout << "a2[" << i << "][" << j <<"] : ";
 			int n;
 			cin >> n;
-			arr2[i].push_back(n);
+			a2[i].push_back(n);
 		}
 	}
 
-	cout << "----------------------------------\n";
-	cout << "one procession + two procession\n";
-	cout << "----------------------------------\n";
-	cout << "   ";
-
-	for(int i=0; i<x;i++){
-		cout << "[" << i << "] ";
-	}
-
-	cout << endl;
+	cout << "첫 번째 행렬 + 두 번째 행렬\n";
 	for(int i=0; i<y; i++){
-		cout << "[" << i << "] ";
 		for(int j=0; j<x; j++){
-			cout << arr1[i][j] + arr2[i][j] << " "; 			
+			cout << a1[i][j] + a2[i][j] << " "; 			
 		}
 		cout << endl;
 	}
