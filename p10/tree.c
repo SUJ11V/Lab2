@@ -3,51 +3,53 @@
 #include <string.h>
 #include <search.h>
 
-struct stu{
+struct info{
 	char *name;
-	int middle;
-	int final;
+	int midterm;
+	int finals;
 };
 
-struct stu *root = NULL;
+struct info *root = NULL;
 
 int compare(const void *cp1, const void * cp2)
 {
-	return strcmp(((struct stu *)cp1)->name,((struct stu *)cp2)->name);
+	return strcmp(((struct info *)cp1)->name,((struct info *)cp2)->name);
 }
+
 void print_node(const void *, VISIT, int);
 
 int main(){
-	int num;
-	int i = 0;
-	printf("How many student : ");
-	scanf("%d",&num);
-	char *nameptr = (char *)malloc(sizeof(char)* (num*30));
-	struct stu *arr = (struct stu *)malloc(sizeof(struct stu) * num);
-	struct stu **ref;
+	int number;
+	printf("학생 수를 입력하세요: ");
+	scanf("%d",&number);
+	char *nameptr = (char *)malloc(sizeof(char)* (number*30));
+	struct info *a = (struct info *)malloc(sizeof(struct info) * number);
+	struct info **ret;
 
-
-	while(scanf("%s %d %d", nameptr, &arr->middle, &arr->final ) !=EOF && i++ < num)
+	for(int i=0; i<number;i++)
 	{
-		arr->name = nameptr;
+		scanf("%s %d %d", nameptr, &a->midterm, &a->finals );
+		a->name = nameptr;
 
-		ref = (struct stu **)tsearch((void *)arr,(void **)&root, compare);
-		printf("%s ",(*(struct stu **)ref)->name);
-		if(*ref == arr)
-			printf("= input\n");
+		ret = (struct info **)tsearch((void *)a,(void **)&root, compare);
+		printf("%s ",(*(struct info **)ret)->name);
+		if(*ret == a){
+			printf("이(가) 등록되었습니다.\n");
+			nameptr += strlen(nameptr)+1;
+			a++;
+		}
 		else
-			printf("= equal name\n");
-		nameptr += strlen(nameptr)+1;
-		arr++;
+			printf("이(가) 중복됩니다.\n");
+		
 	}
 	twalk((void *) root, print_node);
 }
 
-void print_node(const void *arr, VISIT order, int level)
+void print_node(const void *a, VISIT order, int level)
 {
 	if (order == preorder || order == leaf)
-		printf("name = %s, middle = %d, final = %d\n",
-		(*(struct stu **)arr)->name,
-		(*(struct stu **)arr)->middle,
-		(*(struct stu **)arr)->final);
+		printf("성명: %s, 중간 고사 성적: %d, 기말 고사 성적: %d\n",
+		(*(struct info **)a)->name,
+		(*(struct info **)a)->midterm,
+		(*(struct info **)a)->finals);
 }	
