@@ -5,37 +5,29 @@
 
 using namespace std;
 
-struct stu{
+struct info{
 	string name;
-	int middle_test;
-	int final_test;
+	int midterm;
+	int finals;
 };
 
 int main()
 {
-	map<int, stu> map;
-	stu info;
-	int num;
+	map<int, info> map;
+	info Info;
+	int number;
 
-	cout << "How many student : ";
-	cin >> num;
+	cout << "학생 수를 입력하세요: ";
+	cin >> number;
 
-	cout << "input student info\n";
-	cout << "-----------------------\n";
-	cout << "name  middle  final\n";
-	cout << "-----------------------\n";
-	for(int i=0; i<num; i++)
-	{
-		cin >> info.name >> info.middle_test >> info.final_test;
-		map.emplace(i, info);
+	cout << "학생 정보를 입력하세요\n";
+	for(int i=0; i<number; i++){
+		cin >> Info.name >> Info.midterm >> Info.finals;
+		map.emplace(i, Info);
 	}
 
-	cout << "-----------------------\n";
-	cout << "student info list\n";
-	cout << "-----------------------\n";	
 	for(auto i=begin(map); i != end(map); ++i){
-		cout <<"["<< i->first << "] ";
-		cout << i->second.name << " " << i->second.middle_test << " " << i->second.final_test;
+		cout << i->second.name << "중간 고사 성적 " << i->second.midterm<<"기말 고사 성적 "<<i->second.finals;
 		cout << endl;
 	}
 }
